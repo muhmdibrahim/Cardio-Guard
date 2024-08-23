@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        .predict-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .predict-button:hover {
+            background-color: #45a049;
+        }
+
+        .result-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        h1,
+        h2 {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+{% extends 'home/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <h1>Disease Prediction</h1>
+        <div class="form-container">
+            <form action="/process_text_symptoms" method="post">
+                <div class="form-group">
+                    <label for="input_text">Enter your symptoms </label><br>
+                    <textarea id="input_text" name="input_text" rows="4" cols="50"
+                        placeholder="Describe How You Feel...."></textarea>
+                </div>
+                <button type="submit" class="btn btn-success btn-lg btn-block predict-button">Predict</button>
+            </form>
+        </div>
+
+        {% if error_message %}
+        <div class="error-message">
+            {{ error_message }}
+        </div>
+        {% endif %}
+
+        {% if prediction_result %}
+        <div class="result-container">
+            <h2>Prediction Result</h2>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Disease</th>
+                    <td>{{ prediction_result.Disease }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ prediction_result.Description }}</td>
+                </tr>
+                <tr>
+                    <th>Diets</th>
+                    <td>{{ prediction_result.Diets }}</td>
+                </tr>
+                <tr>
+                    <th>Workout</th>
+                    <td>{{ prediction_result.Workout }}</td>
+                </tr>
+                <tr>
+                    <th>Medication</th>
+                    <td>{{ prediction_result.Medication }}</td>
+                </tr>
+                <tr>
+                    <th>Precaution</th>
+                    <td>{{ prediction_result.Precaution }}</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        {% endif %}
+    </div>
+    <br>
+</body>
+{% endblock %}
+</html>

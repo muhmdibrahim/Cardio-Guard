@@ -1,0 +1,55 @@
+{% extends 'home/layout.html' %}
+
+{% block title %}Prediction Result{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<p>Welcome back, {{ username }}</p>
+<div class="container mt-5">
+    <h1 class="text-center">Detection Result</h1>
+    <div class="text-center mt-4">
+        <img src="{{ image_url }}" alt="Uploaded Image" class="img-fluid rounded">
+    </div>
+    <div class="mt-4">
+        <h2 class="text-center">In Image</h2>
+        <p class="text-center">{{ nutritional_info[0] }}</p>
+        <div class="mt-4">
+            {% for info in nutritional_info[1:] %}
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h4 class="card-title">Nutritional Information for {{ info.name }}</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">Total Fat: {{ info.fat_total }} g</li>
+                        <li class="list-group-item">Saturated Fat: {{ info.fat_saturated }} g</li>
+                        <li class="list-group-item">Sodium: {{ info.sodium }} mg</li>
+                        <li class="list-group-item">Potassium: {{ info.potassium }} mg</li>
+                        <li class="list-group-item">Cholesterol: {{ info.cholesterol }} mg</li>
+                        <li class="list-group-item">Total Carbohydrates: {{ info.carbohydrates_total }} g</li>
+                        <li class="list-group-item">Fiber: {{ info.fiber }} g</li>
+                        <li class="list-group-item">Sugar: {{ info.sugar }} g</li>
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+    <div style="font-size: x-large; text-align: center;">
+        <h1> Prediction: {{ prediction }}</h1>
+        <br>
+    </div>
+    <div class="text-center mt-4">
+        <a href="{{ url_for('upload_file') }}" class="btn btn-primary">Detect Another Image</a>
+    </div>
+    <br>
+    <br>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

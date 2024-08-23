@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css')}}" />
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css.css')}}" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+            crossorigin="anonymous"></script>
+</head>
+<style>
+    body{
+        margin: 0;
+    }
+    .navtop {
+        background: #008CBA;
+        height: 60px;
+        width: 100%;
+        border: 0;
+    }
+    .navtop div {
+        display: flex;
+        margin: 0 auto;
+        width: 1000px;
+        height: 100%;
+    }
+    .website_title{
+        animation: example_1;
+        animation-duration: 2s;
+        animation-iteration-count: 3;
+        animation-direction:alternate-reverse;  
+        position: relative;
+    }
+    @keyframes example_1 {
+        0%   {left:0px; top:0px;}
+        25%  {left:10px; top:0px;}
+        50%  {left:10px; top:10px;}
+        75%  {left:0px; top:10px;}
+        100% {left:0px; top:0px;}
+    }
+
+    .navtop div h2, .navtop div a {
+        display: inline-flex;
+        align-items: center;
+    }
+    .navtop div h2 {
+        flex: 1;
+        font-size: 24px;
+        padding-left: 20px;
+        margin: 0;
+        color: #eaebed;
+        font-weight: normal;
+        font-family: 'Pacifico', cursive;
+        font-weight: bold;
+    }
+    .navtop div a {
+        padding: 0 11px;
+        text-decoration: none;
+        color: #eaebed;
+        font-family: 'Pacifico', cursive;
+        font-size: 14px;
+    }
+    .navtop div a i, .navtop div a svg {
+        padding: 2px 5px 0 0;
+    }
+    .navtop div a:hover {
+        color: #bfc0c1;
+        font-size: 15px;
+    }
+</style>
+<body>
+    <nav class="navtop">
+        <div>
+            <h2 class="website_title">Cardio Guard</h2>
+            <a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a>
+            {% if username == "hemaa_ai" %}
+                <a href="{{ url_for('admin') }}"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-lock" viewBox="0 0 16 16">
+                    <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m0 5.996V14H3s-1 0-1-1 1-4 6-4q.845.002 1.544.107a4.5 4.5 0 0 0-.803.918A11 11 0 0 0 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664zM9 13a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
+                </svg>Admin</a>
+            {% endif %}
+            <a href="{{ url_for('profile') }}"><i class="fas fa-user-circle"></i>Profile</a>
+            <a href="{{ url_for('postat') }}"><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
+                    <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2"/>
+                    <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0"/>
+                </svg>Posts</a>
+            <a href="{{ url_for('login') }}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-10 mr-auto ml-auto">
+            <h1>CardioGuardBot</h1>
+            <form>
+                <div id="chatbox">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <p class="botText"><span>Hi there 👋<br>How can I help you today?</span></p>
+                    </div>
+                </div>
+                <div id="userInput" class="row">
+                    <div class="col-md-4">
+                        <input id="text" type="text" name="msg" placeholder="write a message" class="form-control">
+                        <button type="submit" id="send" class="btn btn-warning">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("form").on("submit", function(event) {
+                var rawText = $("#text").val(); // user input(message)
+                var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
+                $("#text").val(""); // make "text" empty after assign it to userHtml
+                $("#chatbox").append(userHtml);
+                document.getElementById("userInput").scrollIntoView({ 
+                    // scrolls the page so that the element with the ID "userInput" becomes visible
+                    block: "start", 
+                    behavior: "smooth",
+                });
+                $.ajax({ // initiates (Asynchronous JavaScript and XML) request to a server-side endpoint.
+                    data: {
+                        msg: rawText,
+                    },
+                    type: "POST",
+                    url: "/get",
+                }).done(function(data) {
+                    var botHtml = '<p class="botText"><span>' + data + "</span></p>";
+                    $("#chatbox").append($.parseHTML(botHtml));
+                    document.getElementById("userInput").scrollIntoView({
+                        block: "start",
+                        behavior: "smooth",
+                    });
+                });
+                event.preventDefault();
+            });
+        });
+    </script>
+</body>
+
+</html>

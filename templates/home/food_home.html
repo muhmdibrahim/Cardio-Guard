@@ -1,0 +1,82 @@
+{% extends 'home/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<body>
+    <p>Welcome back, {{ username }}</p>
+    <!-- Main content container -->
+    <div class="container ml-container">
+      <form class="form-horizontal" method="post" action="{{ url_for('upload_file') }}" enctype="multipart/form-data">
+
+          <div class="form-group">
+              <label class="control-label col-sm-2" for="file">Upload Your Image:</label>
+              <br>
+              <div class="col-sm-10">
+                  <input type="file" class="form-control" name="file" id="file">
+              </div>
+          </div>
+
+          <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" class="my-cta-button" value="Predict">
+              </div>
+          </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="contact">
+          <a target="_blank" href="https://www.kaggle.com/muhammedibrahimm"><i class="fab fa-kaggle fa-lg"></i></a>
+          <a target="_blank" href="https://www.linkedin.com/in/hemaa-ai"><i class="fab fa-linkedin fa-lg"></i></a>
+      </div>
+      <p class="footer-description">Made by <a href="https://www.instagram.com/hemaa_ai/?hl=ar">@hema_ai</a></p>
+    </footer>
+</body>
+{% endblock %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload Image Form</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Y2dYLn5wUp/rwpdQyH5tTw7BfDP1RCJ5bETmgm5sVFy8d0oIt4P4vNpd7uhflM6K+4H4fB6RP6Wx0J5dt5K3qQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    /* Custom CSS styles */
+    body {
+        background-color: #f3f4f7; /* Light gray background */
+        font-family: Arial, sans-serif; /* Default font */
+    }
+
+    .ml-container {
+        max-width: 600px; /* Center align container */
+        margin: 0 auto;
+        padding-top: 50px; /* Add top padding for spacing */
+    }
+
+    .form-group {
+        margin-bottom: 20px; /* Space between form groups */
+    }
+
+    /* Form styling */
+    .form-horizontal label {
+        font-weight: bold; /* Bold labels */
+        color: #555555; /* Dark gray text color */
+    }
+
+    .form-horizontal .form-control {
+        border: 1px solid #cccccc; /* Light gray border */
+    }
+
+    .form-horizontal .btn-success {
+        background-color: #4CAF50; /* Green button */
+        border: none; /* No border */
+        padding: 10px 20px; /* Padding inside button */
+        font-size: 16px; /* Larger font size */
+    }
+
+    .form-horizontal .btn-success:hover {
+        background-color: #45a049; /* Darker green on hover */
+    }
+
+</style>

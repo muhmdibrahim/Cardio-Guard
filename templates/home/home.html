@@ -1,0 +1,269 @@
+{% extends 'home/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+<style>
+  body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+  }
+
+  .big_container_1, .big_container_2 {
+      text-align: center;
+      justify-content: center;
+      background-color: #e6f7ff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-control {
+      width: 90%;
+      height: 100px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      resize: none;
+  }
+
+  .submit-btn-cr-post {
+      margin-top: 10px;
+  }
+
+  .btn-primary-cr-post {
+      border-radius: 5px;
+      background-color: hwb(140 36% 36%);
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+  }
+
+  .btn-primary-cr-post:hover {
+      background-color: hwb(140 17% 57%);
+  }
+
+  .big_container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 20px;
+  }
+
+  .container {
+      position: relative;
+      width: 30%;
+      margin: 10px 0;
+  }
+
+  .image {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+  }
+
+  .container:hover .overlay {
+      opacity: 1;
+  }
+
+  .text {
+      color: white;
+      font-size: 20px;
+      font-family: 'Arial', sans-serif;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      transition: transform 0.3s ease;
+  }
+
+  .container:hover .text {
+      transform: translate(-50%, -45%);
+  }
+
+  .content-paragraph {
+      text-align: center;
+      background-color: #e6f7ff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+  }
+
+  .info-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #e6f7ff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .info-section img {
+      max-width: 50%;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .info-section img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .info-text {
+      padding: 20px;
+      font-size: 18px;
+      font-family: 'Arial', sans-serif;
+      animation: slideIn 1s ease-in-out;
+  }
+
+  @keyframes slideIn {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0); }
+  }
+  .info-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      padding: 20px;
+      background-color: #ffa07a;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+  }
+
+  .info-box {
+      width: 45%;
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .info-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .info-box img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+  }
+
+  .info-box p {
+      font-size: 16px;
+      color: #333;
+  }
+</style>
+
+<p>Welcome back, {{ username }}</p>
+<div class="big_container_1">
+  <form class="for-text-cr-post" action="{{ url_for('create_post') }}" method="POST">
+      <textarea name="text_cr_post" id="text_cr_post" class="form-control" placeholder="Share your thoughts..."></textarea>
+      <br>
+      <div class="submit-btn-cr-post">
+        <button type="submit" class="btn-primary-cr-post">Post</button>
+      </div>
+  </form>
+</div>
+
+<div class="content-paragraph">
+  <p>Cardio Guard is a comprehensive tool designed to help you detect heart diseases and determine whether food and drinks are healthy or unhealthy for heart patients. With our advanced technology, we aim to provide you with accurate and reliable information to support your heart health journey.</p>
+</div>
+
+<div class="info-section">
+  <img src="static/images/heart-health.jpg" alt="Heart Health Image">
+  <div class="info-text">
+    <p>At Cardio Guard, we are dedicated to providing you with the latest information and tools to monitor and improve your heart health. Our services include heart disease detection, and assessments of food and drink healthiness tailored for heart patients. Stay informed, stay healthy!</p>
+  </div>
+</div>
+
+<div class="big_container">
+  <div class="container">
+      <img src="static/images/Cardiovascular-Disease.jpg" alt="Heart Disease Detector" class="image">
+      <div class="overlay">
+        <div class="text"><a href="{{ url_for('hdd') }}" style="color: white; text-decoration: none;">Heart Disease Detector</a></div>
+      </div>
+  </div>
+  
+  <div class="container">
+      <img src="static/images/healthyvsunhealthyfood.jpg" alt="Healthy vs Unhealthy Food Detector" class="image">
+      <div class="overlay">
+        <div class="text"><a href="{{ url_for('healthyvsunhealthyfood') }}" style="color: white; text-decoration: none;">Healthy vs Unhealthy Food Detector</a></div>
+      </div>
+  </div>
+
+  <div class="container">
+      <img src="static/images/healthyvsunhealthydrinks.jpg" alt="Healthy vs Unhealthy Drinks Detector" class="image">
+      <div class="overlay">
+        <div class="text"><a href="{{ url_for('healthyvsunhealthydrinks') }}" style="color: white; text-decoration: none;">Healthy vs Unhealthy Drinks Detector</a></div>
+      </div>
+  </div>
+</div>
+
+
+<div class="info-container">
+  <div class="info-box">
+    <img src="static/images/nutrition.jpg" alt="Nutrition">
+    <a href="{{ url_for('select_symptoms') }}" style="color: white; text-decoration: none"}>
+        <button type="submit" class="btn btn-success btn-lg btn-block predict-button">Select Your Symptoms</button>
+    </a>
+    <br>
+    <br>
+    <a href="{{ url_for('select_symptoms_text') }}" style="color: white; text-decoration: none"}>
+        <button type="submit" class="btn btn-success btn-lg btn-block predict-button">Describe How to Fell</button>
+    </a>
+  </div>
+  <div class="info-box">
+    <img src="static/images/exercise.jpg" alt="Exercise">
+    <p>Find out the best exercises for improving heart health. Get tips and advice on how to incorporate physical activity into your daily routine for optimal cardiovascular health.</p>
+  </div>
+</div>
+<br>
+<br>
+
+{% endblock %}

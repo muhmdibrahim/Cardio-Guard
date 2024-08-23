@@ -1,0 +1,60 @@
+{% extends 'home/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+<style>
+    /* Result */
+    .results{
+    padding: 30px 0 0;
+    flex: 1 0 auto;
+    text-align: center;
+    }
+
+    .unsurvived{
+        color: #ff0000;
+    }
+
+    .survived{
+        color: green;
+    }
+    .survived , .unsurvived{
+        font-family: 'Pacifico', cursive;
+        font-size: 35px;
+        font-weight: bold;
+    }
+</style>
+
+<p>Welcome back, {{ username }}</p>
+<div class="container_2">
+    <h2 class='container-heading'><span class="heading_font">Heart Disease Detector</span></h2>
+    <div class='description'>
+      <p>A Machine Learning Web Application that predicits Failure of Heart Disease, 
+         Built with Flask and Deployed using @hema_ai.</p>
+        <p>(Note:This model is 97.3% accurate)</p>
+    </div>
+
+</div>
+
+<div class="results">
+    {% if prediction == 0 %}
+        <h3>Prediction: <span class='survived'>You Are In a Good Health🤗</span></h3>
+        <!-- 
+        {% with status = "Good Health" %}
+        <h3 id="status"> {{ status }} </h3>
+        {% endwith %}
+        -->
+
+    {% elif prediction == 1 %}
+        <h3>Prediction: <span class='unsurvived'>You Need To Take Care More About Your Health, Just Follow Up🫠</span></h3>
+        <!--
+        {% with status = "Patient" %}
+        <h3 id="status"> {{ status }} </h3>
+        {% endwith %}
+        -->
+
+    {% endif %}
+</div>
+
+{% endblock %}

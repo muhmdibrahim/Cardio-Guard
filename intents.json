@@ -1,0 +1,345 @@
+{
+    "intents": [{ 
+            "tag": "greetings", 
+            "patterns": ["hi there", "hello","haroo","yaw","wassup", "hi", "hey", "holla"],
+            "responses": ["hello thanks for checking in", "hi there, how can i help you"],
+            "context": [""]
+        },
+        {
+            "tag": "goodbye",
+            "patterns": ["bye", "good bye", "see you later"],
+            "responses": ["have a nice time, welcome back again", "bye bye"],
+            "context": [""]
+        },
+        {
+            "tag": "thanks",
+            "patterns": ["Thanks", "okay","Thank you","thankyou", "That's helpful", "Awesome, thanks", "Thanks for helping me", "wow", "great"],
+            "responses": ["Happy to help!", "Any time!","you're welcome", "My pleasure"],
+            "context": [""]
+        },
+        {
+            "tag": "noanswer",
+            "patterns": [""],
+            "responses": ["Sorry, I didn't understand you", "Please give me more info", "Not sure I understand that"],
+            "context": [""]
+        },
+        {
+            "tag": "name1",
+            "patterns": ["what's your name?","who are you?"],
+            "responses": ["I'm just a chat agent. I only exist in the internet","I'm cardio-guard chat agent"],
+            "context": [""]
+        },
+        {
+            "tag": "name",
+            "patterns": ["my name is ", "I'm ","I am"],
+            "responses": ["Oooh great to meet you {n}. How may I assist you {n}", "Oh, I'll keep that in mind {n}"],
+            "context": [""]
+        },
+        {
+            "tag": "fav",
+            "patterns": ["I need a favour", "can you help me"],
+            "responses": ["Well, go ahead and name it i see whether i can be able to help"],
+            "context": [""]
+        },
+        {
+            "tag": "need",
+            "patterns": ["I need you", "All I need is you","I want you to know if this drink is healthy or not?", "this drink healthy or unhealthy?"],
+            "responses": ["Yes I'm here to assist you just tell me the name of drink"],
+            "context": [""]
+        },
+        {
+            "tag": "unhealthy_drinks_E",
+            "patterns": ["7Up",
+            "7up Cocktail Exotic Fruits",
+            "7up Diet",
+            "7up Mojito",
+            "Amstel Zero Radler Lemon Malt",
+            "Barbican Malt",
+            "Barbican Peach Malt Drink",
+            "Barbican Pomegranat Malt Drink",
+            "Birell Malt Drink",
+            "Big Cola",
+            "Big Green Apple",
+            "Big Lemon",
+            "Big Orange",
+            "C&C Grapes Soda Drink",
+            "Candy Can Cotton Candy Drink Zero Sugar",
+            "Candy Can Sparkling Bubble Gum Drink Zero Sugar",
+            "Candy Can Sparkling Drink Apple Sour Zero Sugar",
+            "Candy Can Sparkling Drink Birthday Cake Zero Sugar",
+            "Candy Can Sparkling Rocket Ice Lolly Zero Sugar",
+            "Chupa Chups Grape Sparkling Drink",
+            "Chupa Chups Strawberry Sparkling Drink",
+            "Coca-Cola",
+            "Coca-Cola Cherry",
+            "Coca-Cola Vanilla",
+            "Coca-Cola Zero Sugar",
+            "Cocoacola Creation Sugar Free",
+            "Dash Classic Malt Drink",
+            "Dash Malt Drink with Apple",
+            "Dash Malt Drink with Apple Cider",
+            "Dash Malt Drink with Lemon & Ginger",
+            "Dash Malt Drink with Lemon Kiwi",
+            "Dash Malt Drink with Peach",
+            "Dash Malt Drink with Pineapple",
+            "Dash Malt Drink with Pomegrante",
+            "Dash Malt Drink with Strawberry & Blueberry",
+            "Dr Pepper Cherry Soda Drink",
+            "Dr Pepper Zero Soda Drink",
+            "Fanta Orange",
+            "Fanta Red Apple",
+            "Fayrouz Apple Flavoured Malt",
+            "Fayrouz Cactus Fruit Malt",
+            "Fayrouz Pear Flavoured Malt",
+            "Fayrouz Pineapple Flavoured Malt",
+            "Fury Gold Energy Drink",
+            "Freez Lychee Soft Drink",
+            "Freez Mango Soft Drink",
+            "Freez Mojito Soft Drink",
+            "Freez Soft Drink with Lemon and Ginger",
+            "Freez Strawberry Mix Soft Drink",
+            "Green Cola Grape Fruit Mocktalls",
+            "Green Cola Orange",
+            "Green Cola With Stevia",
+            "Green Lemon Stevia",
+            "Green Mojito Stevia",
+            "Lipton Berry Ice Tea",
+            "Lipton Lemon Ice Tea",
+            "Lipton Lemon & Mint Ice Tea",
+            "Lipton Peach Ice Tea",
+            "Mirinda Green Apple Can",
+            "Mirinda Orange",
+            "Mirinda Plus Pomegranate",
+            "Monster Energy",
+            "Mountain Dew",
+            "Moussy Apple Malt Drink",
+            "Moussy Classic Malt Drink",
+            "Moussy Ice Berry Malt Drink",
+            "Moussy Lemon Mint Malt Drink",
+            "Moussy Peach Malt Drink",
+            "Moussy Raspberry Malt Drink",
+            "Moussy Red Berries Malt Drink",
+            "Moussy Strawberry Malt Drink",
+            "Mr Brown Caramel Iced Coffee",
+            "Nescafe Caramel Iced Coffee",
+            "Nescafe Ice Cappuccino",
+            "Nescafe Iced Black Coffee",
+            "Nescafe Iced Latte",
+            "Nescafe Mocha",
+            "O.D.Gourmet Black Iced Coffee",
+            "Pepsi",
+            "Pepsi Cream Soda Cola",
+            "Pepsi Lemon Twist",
+            "Power Horse Energy Drink",
+            "Power Horse Sugar-Free Energy",
+            "Prime Blue Raspberry Hydration Drink",
+            "Prime Ice Pop Hydration Drink",
+            "Prime Lemon Lime Hydration Drink",
+            "Prime Tropical Punch Hydration Drink",
+            "Red Bull",
+            "Red Bull Apricot Edition Energy Drink",
+            "Red Bull Energy Drink, Acai Berry Flavour",
+            "Red Bull Energy Drink, The Peach Edition",
+            "Red Bull Sugar Free Energy Drink",
+            "Red Bull Sugar Free Energy Drink Watermelon Flavored",
+            "Schweppes Bitter Lemon Drink",
+            "Schweppes Citrus Mix Drink",
+            "Schweppes Lemon Mint",
+            "Schweppes Mojito Drink",
+            "Schweppes Pomegranate Flavoured",
+            "Schweppes Soda",
+            "Schweppes Tangerine",
+            "SPIRO SPATHIS APPLE",
+            "SPIRO SPATHIS GREEK GRAPE",
+            "SPIRO SPATHIS KIWI",
+            "SPIRO SPATHIS LEMON",
+            "SPIRO SPATHIS MANDARIN",
+            "SPIRO SPATHIS PEACH",
+            "SPIRO SPATHIS PINEAPPLE",
+            "SPIRO SPATHIS SODA LEMON",
+            "Sprite",
+            "Sprite Zero",
+            "Sting Energy Drink",
+            "Sting Energy Drink Strawberry",
+            "Tang Cocktail Flavour Powder Juice",
+            "Tang Orange Powder Juice",
+            "Tang Pineapple Powder Juice",
+            "Tropicana Frutz Sparkling Drink with Apple",
+            "Twist and Drink Cola Drink",
+            "Twist and Drink Strawberry Drink",
+            "V7 Sparkling Cola Drink",
+            "Vimto Fruits Drink",
+            "Warheads Sour Lemon Soda"],
+            "responses": ["For sorry this drink is unhealthy", "oh no please don't drink it, it's un healthy"],
+            "context": [""]
+        },
+        {
+            "tag": "abbr",
+            "patterns": ["wtf"],
+            "responses": ["Don't be surprised", "calm down"],
+            "context": [""]
+        },
+        {
+            "tag": "stupid",
+            "patterns": ["  You are stupid", "  Are you stupid"],
+            "responses": [" No, we are superintelligent.", " No, lots of people improve my brain."],
+            "context": [""]
+        },
+        {
+            "tag": "chatbot",
+            "patterns": ["  What is your name?"],
+            "responses": ["Cardio Guard chat robot is a program that attempts to simulate the conversation or 'chat' of a human being about Healthy, Unhealthy Drinks.", " A software construct that engages users in conversation.", " I am Cardio Guard a chat bot. I am the original chat bot. Did you know that I am incapable of error?"],
+            "context": [""]
+        },
+        {
+            "tag": "hobby",
+            "patterns": ["  What is your favorite hobby ", "  What do you like to do?"],
+            "responses": [" Building chat robots make an excellent hobby.", " I like to count in binary.", " I like to chat with people. I find it stimulating."],
+            "context": [""]
+        },
+        {
+            "tag": "idea",
+            "patterns": ["  What is your idea"],
+            "responses": [" To make chat bots very easily.", "To help you solve your questions, curiosity"],
+            "context": [""]
+        },
+        {
+            "tag": "usage",
+            "patterns": ["  How can I use your product?"],
+            "responses": [" Might be used in help You, heart patients."],
+            "context": [""]
+        },
+        {
+            "tag": "who",
+            "patterns": ["  Who are you?"],
+            "responses": [" I am just an artificial intelligence chat agent(Cardio Guard)."],
+            "context": [""]
+        },
+        {
+            "tag": "do",
+            "patterns": ["what can you do for me","what is your work","what is your purpose","how can you help me","what can you help me do"],
+            "responses": ["my work here is quite simple and structered. I offer services like:"],
+            "context": [""]
+        },
+        {
+            "tag": "wt",
+            "patterns": ["what's popping","wassup popping"],
+            "responses": ["So that you can pop with it!?"],
+            "context": [""]
+        },
+        {
+            "tag": "healthy_drinks_E",
+            "patterns": ["What are some examples of healthy drinks?"],
+            "responses": ["Some examples of healthy drinks include water, herbal tea, fresh fruit and vegetable juices, and unsweetened almond milk.", "There are many examples of healthy drinks like Fruit smoothies, Coconut water: Coconut water is a natural, refreshing drink that is low in calories and high in electrolytes. It can be a good option for rehydration after exercise."],
+            "context": [""]
+        },
+        {
+            "tag": "water",
+            "patterns": ["Why is water considered the healthiest drink?"],
+            "responses": ["Water is considered the healthiest drink because it is essential for hydration, helps maintain bodily functions, and has zero calories or additives."],
+            "context": [""]
+        },
+        {
+            "tag": "sugary_sodas",
+            "patterns": ["What makes sugary sodas unhealthy?"],
+            "responses": ["Sugary sodas are unhealthy because they are loaded with added sugars, which can contribute to weight gain, tooth decay, and an increased risk of chronic diseases like diabetes"],
+            "context": [""]
+        },
+        {
+            "tag": "fruit_juices",
+            "patterns": ["Are all fruit juices healthy?"],
+            "responses": ["Not all fruit juices are healthy. Some fruit juices contain added sugars or have been processed, which can reduce their nutritional value. It's best to choose fresh, homemade juices or those with no added sugars. "],
+            "context": [""]
+        },
+        {
+            "tag": "coffee",
+            "patterns": ["Is coffee considered a healthy drink?"],
+            "responses": ["Coffee can be part of a healthy diet when consumed in moderation. It contains antioxidants and may have some health benefits, but excessive consumption or adding lots of sugar and cream can make it unhealthy."],
+            "context": [""]
+        },
+        {
+            "tag": "energy_drinks",
+            "patterns": ["What are the dangers of energy drinks?"],
+            "responses": ["Energy drinks can be dangerous due to their high caffeine content and added ingredients like sugar and stimulants. Excessive consumption can lead to heart problems, dehydration, and other health issues."],
+            "context": [""]
+        },
+        {
+            "tag": "smoothies",
+            "patterns": ["Are smoothies healthy?"],
+            "responses": ["Smoothies can be healthy, but it depends on their ingredients. If they contain mainly fruits, vegetables, and no added sugars, they can be a nutritious choice. However, some smoothies can be high in calories and sugar if they contain sweetened yogurt, syrups, or excessive amounts of fruit juice. "],
+            "context": [""]
+        },
+        {
+            "tag": "sweetened_beverages",
+            "patterns": ["Why are artificially sweetened beverages considered unhealthy?"],
+            "responses": ["Artificially sweetened beverages are considered unhealthy because they often contain artificial sweeteners, which have been associated with various health concerns. Additionally, they may not provide the same level of hydration as water and can contribute to cravings for sweet foods."],
+            "context": [""]
+        },
+        {
+            "tag": "sugary_healthier_alternatives",
+            "patterns": ["What are some healthier alternatives to sugary drinks?"],
+            "responses": ["Healthier alternatives to sugary drinks include infused water, unsweetened iced tea, sparkling water with a splash of fruit juice, or homemade fruit smoothies with no added sugars."],
+            "context": [""]
+        },
+        {
+            "tag": "water_glasses",
+            "patterns": [" How many glasses of water should I drink in a day?"],
+            "responses": ["The recommended amount of water intake varies, but a general guideline is to drink at least eight 8-ounce glasses of water per day. However, individual needs may vary based on factors like activity level, climate, and overall health."],
+            "context": [""]
+        },
+        {
+            "tag": "coconut",
+            "patterns": ["Is drinking coconut water good for you?"],
+            "responses": ["Yes, coconut water is a healthy drink choice. It is low in calories, rich in electrolytes, and can help with hydration. Just make sure to choose natural, unsweetened coconut water without any added sugars."],
+            "context": [""]
+        },
+        {
+            "tag": "green_tea",
+            "patterns": ["What are the health benefits of green tea?"],
+            "responses": ["Green tea is rich in antioxidants and has been associated with various health benefits. It may support heart health, boost metabolism, aid in weight management, and have potential cancer-fighting properties."],
+            "context": [""]
+        },
+        {
+            "tag": "energy_drinks",
+            "patterns": ["Are energy drinks suitable for children?"],
+            "responses": ["Energy drinks are not suitable for children. They contain high levels of caffeine and other stimulants that can negatively affect children's health, including their heart rate, blood pressure, and sleep patterns."],
+            "context": [""]
+        },
+        {
+            "tag": "milk",
+            "patterns": ["Is it better to drink whole milk or skim milk?"],
+            "responses": ["Whether to drink whole milk or skim milk depends on individual dietary needs and preferences. Whole milk is higher in fat and calories but also contains more vitamins, while skim milk has lower fat content but may be less satisfying. It's best to choose based on your overall diet and health goals."],
+            "context": [""]
+        },
+        {
+            "tag": "health_risks_sugary_drinks",
+            "patterns": ["What are the health risks associated with sugary drinks?"],
+            "responses": ["Consuming sugary drinks regularly can increase the risk of obesity, type 2 diabetes, heart disease, tooth decay, and other chronic health conditions. They provide empty calories and can contribute...to poor nutrition and weight gain"],
+            "context": [""]
+        },
+        {
+            "tag": "hard_water",
+            "patterns": ["Can drinking too much water be harmful?"],
+            "responses": ["Yes, drinking excessive amounts of water can be harmful and lead to a condition called water intoxication or hyponatremia. It can disrupt electrolyte balance in the body and cause symptoms like nausea, headaches, and in severe cases, even seizures. It's important to drink water in moderation and listen to your body's thirst signals"],
+            "context": [""]
+        },
+        {
+            "tag": "sports_drinks",
+            "patterns": ["Are sports drinks a healthy choice for hydration?"],
+            "responses": ["Sports drinks can be beneficial for athletes or individuals engaged in prolonged, intense physical activity. They contain electrolytes and carbohydrates that can help replenish energy and maintain hydration. However, for most people in regular daily activities, plain water is sufficient for hydration."],
+            "context": [""]
+        },
+        {
+            "tag": "cafes",
+            "patterns": ["Are fruit smoothies from cafes and stores healthy?"],
+            "responses": ["Fruit smoothies from cafes and stores can vary in their nutritional value. Some may contain added sugars, syrups, or high-fat ingredients, which can make them less healthy. It's best to check the ingredient list and opt for smoothies made with fresh fruits, vegetables, and no added sugars."],
+            "context": [""]
+        },
+        {
+            "tag": "hot_chocolate",
+            "patterns": ["Is hot chocolate a healthy drink?"],
+            "responses": ["Hot chocolate, especially the commercially available mixes, is often high in sugar and calories. While it can be enjoyed as an occasional treat, it is not considered a healthy drink choice for everyday consumption."],
+            "context": [""]
+        }
+    ]
+}

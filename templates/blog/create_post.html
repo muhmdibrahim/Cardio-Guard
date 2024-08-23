@@ -1,0 +1,67 @@
+{% extends 'home/layout.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+<style>
+.big_container_1{
+    text-align: center;
+    justify-content: center;
+    background-color: aliceblue;
+    height: 200px;
+}
+.for-text-cr-post {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 90px;
+    background-color: aliceblue;
+    position: relative;
+}
+.form-control {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    border-radius: 5px;
+	font-family: 'Pacifico', cursive;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.submit-btn-cr-post {
+    background-color: #ffffff;
+  	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+    width: 20%;
+}
+.btn-primary-cr-post {
+    color: #adb2ba;
+  	text-decoration: none;
+  	display: inline-flex;
+  	padding: 0 5px 5px 5px;
+    font-size: large;
+  	font-weight: bold;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.btn-primary-cr-post:hover{
+    background-color: #adb2ba;
+    color: #ffffff;
+}
+
+</style>
+<p>Welcome back, {{ username }}</p>
+<div class="big_container_1">
+    <form class="for-text-cr-post" method="POST">
+        <textarea name="text_cr_post" id="text_cr_post" class="form-control"></textarea>
+        <br>
+        <div class="submit-btn-cr-post">
+          <button type="submit" class="btn-primary-cr-post">Post</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,161 @@
+{% extends 'home/layout.html' %}
+
+{% block title %} Posts by {{ username }} {% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: 0;
+    }
+
+    .big_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .card_border {
+        background-color: #fffbf3;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    .username_post {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .username_post img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .text_post {
+        font-size: 1.1em;
+        color: #333;
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .comments_section {
+        border-top: 1px solid #ddd;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+
+    .text_comments {
+        font-size: 0.9em;
+        color: #555;
+        margin-bottom: 10px;
+        text-align: left;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    .text_comments .delete_comment {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: none;
+        border: none;
+        color: #ff5722;
+        cursor: pointer;
+    }
+
+    .btn-primary-cr-post {
+        background-color: #ff5722;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary-cr-post:hover {
+        background-color: #ff5722;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 1em;
+        box-sizing: border-box;
+    }
+
+    .comment-form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 15px;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .welcome-message {
+        font-size: 1.75em;
+        color: #000000;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="big_container">
+    <p class="welcome-message">Welcome back, {{ username }}</p>
+    {% for post in posts %}
+        <div class="card_border">
+            <div class="username_post">
+                {{ post.name }}
+            </div>
+            <div class="text_post">{{ post.text }}</div>
+            <div class="comments_section">
+                {% for comment in comments %}
+                    {% if comment.post_id == post.id %}
+                        <div class="text_comments">
+                            <strong>{{ comment.author }}</strong>: {{ comment.text }}
+                            {% if user == comment.author %}
+                                <button class="delete_comment" onclick="location.href='{{ url_for('delete_comment', id = comment.id) }}'">×</button>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% if username == post.name %}
+                <div class="button-container">
+                    <button type="submit" onclick="location.href='{{ url_for('delete_post', id = post.id) }}'" class="btn-primary-cr-post">Delete Post</button>
+                </div>
+            {% else %}
+                <form class="comment-form" method="POST" action="{{ url_for('create_comment', id = post.id) }}">
+                    <textarea name="text_cr_comment" id="text_cr_comment" class="form-control" placeholder="Write a comment..."></textarea>
+                    <div class="button-container">
+                        <button type="submit" class="btn-primary-cr-post">Comment</button>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
