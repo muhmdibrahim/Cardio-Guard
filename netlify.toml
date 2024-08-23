@@ -1,0 +1,9 @@
+[build]
+  # Command to install dependencies and build your Flask project
+  command = "pip install -r requirements.txt && Python main.py
+  # Directory where your build output or static files are located
+  publish = "static"
+
+[build.environment]
+  # Optionally specify Python version if needed
+  # PYTHON_VERSION = "3.x"
