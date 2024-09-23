@@ -68,6 +68,7 @@ google-auth-oauthlib==0.4.6
 google-pasta==0.2.0
 greenlet==2.0.2
 grpcio==1.51.1
+gunicorn
 h11==0.14.0
 h5py==3.7.0
 huggingface-hub==0.14.1
