@@ -240,7 +240,6 @@ wcwidth==0.2.6
 weasel==0.4.1
 webcolors==1.12
 websocket-client==1.4.2
-Werkzeug==2.2.3
 wordcloud==1.8.2.2
 wrapt==1.14.1
 xgboost==1.7.5
